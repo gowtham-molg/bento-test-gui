@@ -143,7 +143,7 @@ class PneumaticControlGUI:
                 text=f"Ch {i+1} Open",
                 font=("Arial", 10),
                 width=10,
-                command=lambda n=i: self.on_valve(n, True)
+                command=lambda n=i: self.on_valve(n+1, True)
             )
             btn_open.grid(row=0, column=2*i, padx=5)
 
@@ -152,7 +152,7 @@ class PneumaticControlGUI:
                 text=f"Ch {i+1} Close",
                 font=("Arial", 10),
                 width=10,
-                command=lambda n=i: self.on_valve(n, False)
+                command=lambda n=i: self.on_valve(n+1, False)
             )
             btn_close.grid(row=0, column=2*i + 1, padx=5)
 
