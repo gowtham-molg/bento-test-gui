@@ -1,4 +1,5 @@
-import test.test_gui as test_gui
+import pytest
+from gui import get_ip_controller, send_usb_command_retrieve_response
 import types
 from gui import get_ip_controller, send_usb_command_retrieve_response
 
