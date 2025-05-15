@@ -3,8 +3,11 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import pytest
-from unittest.mock import AsyncMock, patch
-from gui import PneumaticControlGUI
+from unittest.mock import AsyncMock, patch, MagicMock
+
+# Patch tk.Tk globally before importing gui
+with patch("tkinter.Tk", return_value=MagicMock()):
+    from gui import PneumaticControlGUI
 
 class DummyRoot:
     def after(self, ms, func):
