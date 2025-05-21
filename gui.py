@@ -11,8 +11,6 @@ import aiocoap.error
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-# --- Global IP of controller (set it after getting from USB) ---
-bento_controller_ip = "192.168.1.100"
 
 # --- Async CoAP command ---
 async def send_controller_comand(register: str, value, close_connection=False) -> dict:
