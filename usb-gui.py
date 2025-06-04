@@ -7,6 +7,7 @@ import time
 from aiocoap import Context, Message, POST
 import aiocoap.error
 import serial
+from typing import List, Optional
 
 # --- Logging setup ---
 logging.basicConfig(level=logging.DEBUG)
@@ -85,18 +86,18 @@ async def pneumatic_set_valve(channel_number: int, open_value: bool):
 # def send_usb_command_retrieve_response(serial_port: str, command: str):
 #     return [" DHCP    preferred       1       172.16.50.2/255.255.255.0"]
 
-# def get_ip_controller(serial_port: str = "/dev/ttyUSB0") -> str | None:
-#     lines = send_usb_command_retrieve_response(serial_port, "net ipv4")
-#     for line in lines:
-#         if "DHCP" in line and "preferred" in line:
-#             parts = line.split()
-#             if len(parts) > 3:
-#                 return parts[3].split('/')[0]
-#     return None
+def get_ip_controller(serial_port: str = "/dev/ttyUSB0") -> Optional[str]:
+    lines = send_usb_command_retrieve_response(serial_port, "net ipv4")
+    for line in lines:
+        if "DHCP" in line and "preferred" in line:
+            parts = line.split()
+            if len(parts) > 3:
+                return parts[3].split('/')[0]
+    return None
 
 # --- Optional: Real USB serial fetch implementation (commented out) ---
 
-def send_usb_command_retrieve_response(serial_port: str, command: str) -> list[str]:
+def send_usb_command_retrieve_response(serial_port: str, command: str) -> List[str]:
     try:
         with serial.Serial(serial_port, baudrate=115200, timeout=2) as ser:
             ser.write((command + '\n').encode('utf-8'))
@@ -157,7 +158,7 @@ class PneumaticControlGUI:
                 text=f"Ch {i+1} Open",
                 font=("Arial", 10),
                 width=10,
-                command=lambda n=i: self.on_valve(n, True)
+                command=lambda n=i: self.on_valve(n+1, True)
             )
             btn_open.grid(row=0, column=2*i, padx=5)
 
@@ -166,7 +167,7 @@ class PneumaticControlGUI:
                 text=f"Ch {i+1} Close",
                 font=("Arial", 10),
                 width=10,
-                command=lambda n=i: self.on_valve(n, False)
+                command=lambda n=i: self.on_valve(n+1, False)
             )
             btn_close.grid(row=0, column=2*i + 1, padx=5)
 
