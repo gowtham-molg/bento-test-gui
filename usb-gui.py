@@ -81,21 +81,21 @@ async def pneumatic_set_valve(channel_number: int, open_value: bool):
     )
     return ret
 
-# --- USB IP fetch simulation ---
-def send_usb_command_retrieve_response(serial_port: str, command: str):
-    return [" DHCP    preferred       1       172.16.50.2/255.255.255.0"]
+# # --- USB IP fetch simulation ---
+# def send_usb_command_retrieve_response(serial_port: str, command: str):
+#     return [" DHCP    preferred       1       172.16.50.2/255.255.255.0"]
 
-def get_ip_controller(serial_port: str = "/dev/ttyUSB0") -> str | None:
-    lines = send_usb_command_retrieve_response(serial_port, "net ipv4")
-    for line in lines:
-        if "DHCP" in line and "preferred" in line:
-            parts = line.split()
-            if len(parts) > 3:
-                return parts[3].split('/')[0]
-    return None
+# def get_ip_controller(serial_port: str = "/dev/ttyUSB0") -> str | None:
+#     lines = send_usb_command_retrieve_response(serial_port, "net ipv4")
+#     for line in lines:
+#         if "DHCP" in line and "preferred" in line:
+#             parts = line.split()
+#             if len(parts) > 3:
+#                 return parts[3].split('/')[0]
+#     return None
 
 # --- Optional: Real USB serial fetch implementation (commented out) ---
-"""
+
 def send_usb_command_retrieve_response(serial_port: str, command: str) -> list[str]:
     try:
         with serial.Serial(serial_port, baudrate=115200, timeout=2) as ser:
@@ -105,7 +105,7 @@ def send_usb_command_retrieve_response(serial_port: str, command: str) -> list[s
     except Exception as e:
         print(f"Error communicating with USB controller: {e}")
         return []
-"""
+
 
 # --- Start asyncio event loop ---
 loop = asyncio.new_event_loop()
