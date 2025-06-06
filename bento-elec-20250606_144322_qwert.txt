@@ -1,0 +1,31 @@
+IP Fetch - Success on attempt 1: 172.16.50.2
+Initial Close Valve 1 - Success
+Initial Close Valve 2 - Success
+Initial Close Valve 3 - Success
+Initial Close Valve 4 - Success
+Initial Close Valve 5 - Success
+Initial Close Valve 6 - Success
+Read Pressure Closed Valve 1: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 6.822345733642578, 'cmd': 'p_read'}, 'ret': 'OK'}
+Open Valve 1 - Success
+Read Pressure Opened Valve 1: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 6.686986923217773, 'cmd': 'p_read'}, 'ret': 'OK'}
+Close Valve 1 - Success
+Read Pressure Closed Valve 2: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Open Valve 2 - Success
+Read Pressure Opened Valve 2: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Close Valve 2 - Success
+Read Pressure Closed Valve 3: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Open Valve 3 - Success
+Read Pressure Opened Valve 3: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.9126091003418, 'cmd': 'p_read'}, 'ret': 'OK'}
+Close Valve 3 - Success
+Read Pressure Closed Valve 4: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 14.167656898498535, 'cmd': 'p_read'}, 'ret': 'OK'}
+Open Valve 4 - Success
+Read Pressure Opened Valve 4: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 14.167656898498535, 'cmd': 'p_read'}, 'ret': 'OK'}
+Close Valve 4 - Success
+Read Pressure Closed Valve 5: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 18.183330535888672, 'cmd': 'p_read'}, 'ret': 'OK'}
+Open Valve 5 - Success
+Read Pressure Opened Valve 5: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 18.183330535888672, 'cmd': 'p_read'}, 'ret': 'OK'}
+Close Valve 5 - Success
+Read Pressure Closed Valve 6: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 35.577056884765625, 'cmd': 'p_read'}, 'ret': 'OK'}
+Open Valve 6 - Success
+Read Pressure Opened Valve 6: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 35.577056884765625, 'cmd': 'p_read'}, 'ret': 'OK'}
+Close Valve 6 - Success

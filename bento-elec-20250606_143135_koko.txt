@@ -1,0 +1,13 @@
+IP Fetch - Success on attempt 1: 172.16.50.2
+Initial Close Valve 1 - Failed: CoAP command failed: Network error: NetworkError
+Initial Close Valve 2 - Failed: CoAP command failed: Network error: NetworkError
+Initial Close Valve 3 - Failed: CoAP command failed: Network error: NetworkError
+Initial Close Valve 4 - Failed: CoAP command failed: Network error: NetworkError
+Initial Close Valve 5 - Failed: CoAP command failed: Network error: NetworkError
+Initial Close Valve 6 - Failed: CoAP command failed: Network error: NetworkError
+Valve 1 Sequence Failed: CoAP command failed: Network error: NetworkError
+Valve 2 Sequence Failed: CoAP command failed: Network error: NetworkError
+Valve 3 Sequence Failed: CoAP command failed: Network error: NetworkError
+Valve 4 Sequence Failed: CoAP command failed: Network error: NetworkError
+Valve 5 Sequence Failed: CoAP command failed: Network error: NetworkError
+Valve 6 Sequence Failed: CoAP command failed: Network error: NetworkError

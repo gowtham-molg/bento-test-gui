@@ -204,6 +204,7 @@ class PneumaticControlGUI:
                     report_lines.append(f"Read Pressure Closed Valve {channel}: {read_closed}")
                     await pneumatic_set_valve(channel, True)
                     report_lines.append(f"Open Valve {channel} - Success")
+                    await asyncio.sleep(1)  # Delay to allow pressure to build
                     read_opened = await pneumatic_read_valve_state(channel)
                     report_lines.append(f"Read Pressure Opened Valve {channel}: {read_opened}")
                     await pneumatic_set_valve(channel, False)
