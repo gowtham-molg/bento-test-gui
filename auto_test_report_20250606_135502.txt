@@ -1,0 +1,13 @@
+IP Fetch - Success on attempt 1: 172.16.50.2
+Step: Open Valve 1 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 6.822345733642578, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Open Valve 2 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Open Valve 3 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Open Valve 4 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 13.89693546295166, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Open Valve 5 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 18.183330535888672, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Open Valve 6 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 35.577056884765625, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Close Valve 1 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 6.822345733642578, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Close Valve 2 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Close Valve 3 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Close Valve 4 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 14.167656898498535, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Close Valve 5 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 18.183330535888672, 'cmd': 'p_read'}, 'ret': 'OK'}
+Step: Close Valve 6 - Success on attempt 1, State: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 35.577056884765625, 'cmd': 'p_read'}, 'ret': 'OK'}

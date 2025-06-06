@@ -1,0 +1,25 @@
+IP Fetch - Success on attempt 1: 172.16.50.2
+Valve 1 - Pre-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 1 - Post-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 1 - State after open: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 6.686986923217773, 'cmd': 'p_read'}, 'ret': 'OK'}
+Valve 1 - Closed
+Valve 2 - Pre-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 2 - Post-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 2 - State after open: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Valve 2 - Closed
+Valve 3 - Pre-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 3 - Post-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 3 - State after open: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 17.822368621826172, 'cmd': 'p_read'}, 'ret': 'OK'}
+Valve 3 - Closed
+Valve 4 - Pre-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 4 - Post-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 4 - State after open: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 14.032297134399414, 'cmd': 'p_read'}, 'ret': 'OK'}
+Valve 4 - Closed
+Valve 5 - Pre-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 5 - Post-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 5 - State after open: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 18.183330535888672, 'cmd': 'p_read'}, 'ret': 'OK'}
+Valve 5 - Closed
+Valve 6 - Pre-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 6 - Post-open pressure: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'read_pressure', 'data': {'ret': 'NOK', 'data': 'Command not found', 'cmd': 'read_pressure'}, 'ret': 'NOK'}
+Valve 6 - State after open: {'dest_can_bus_id': 1026, 'origin_can_id': 544, 'cmd': 'p_read', 'data': {'ret': 'OK', 'psi': 35.577056884765625, 'cmd': 'p_read'}, 'ret': 'OK'}
+Valve 6 - Closed

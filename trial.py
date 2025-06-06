@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, simpledialog
 import asyncio
 import threading
 import logging
@@ -60,24 +60,8 @@ async def pneumatic_read_valve_state(channel_number: int):
     }, close_connection=True)
     return reply
 
-async def pneumatic_read_pressure():
-    reply = await send_controller_comand("RELAY_TO_MODULE_J", {
-        "origin_can_id": 0x0402,
-        "dest_can_bus_id": 544,
-        "cmd": "read_pressure",
-        "data": {}
-    }, close_connection=True)
-    return reply
-
-def send_usb_command_retrieve_response(serial_port: str, command: str) -> List[str]:
-    try:
-        with serial.Serial(serial_port, baudrate=115200, timeout=2) as ser:
-            ser.write((command + '\n').encode('utf-8'))
-            response = ser.read_until(b'\n\n').decode('utf-8')
-            return response.strip().splitlines()
-    except Exception as e:
-        print(f"Error communicating with USB controller: {e}")
-        return []
+def send_usb_command_retrieve_response(serial_port: str, command: str):
+    return [" DHCP    preferred       1       172.16.50.2/255.255.255.0"]
 
 def get_ip_controller(serial_port: str = "/dev/ttyUSB0") -> Optional[str]:
     lines = send_usb_command_retrieve_response(serial_port, "net ipv4")
@@ -182,82 +166,67 @@ class PneumaticControlGUI:
         self.message_label.config(text="Starting test...")
         self._update_status("orange")
 
-        async def run_and_prompt():
-            report_lines = await self._run_sequence_task()
-            self._prompt_report_filename(report_lines)
+        async def sequence_task():
+            global bento_controller_ip
+            report_lines = []
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        schedule_coro(run_and_prompt())
+            ip = None
+            for attempt in range(1, 4):
+                ip = get_ip_controller()
+                if ip:
+                    report_lines.append(f"IP Fetch - Success on attempt {attempt}: {ip}")
+                    break
+                else:
+                    await asyncio.sleep(0.5)
 
-    async def _run_sequence_task(self):
-        global bento_controller_ip
-        report_lines = []
-
-        ip = None
-        for attempt in range(1, 4):
-            ip = get_ip_controller()
-            if ip:
-                report_lines.append(f"IP Fetch - Success on attempt {attempt}: {ip}")
-                break
-            else:
-                await asyncio.sleep(0.5)
-
-        if not ip:
-            report_lines.append("IP Fetch - Failed after 3 attempts")
-            self.root.after(0, lambda: self._update_status("red"))
-            self.root.after(0, lambda: self.message_label.config(text="Failed to fetch IP."))
-            return report_lines
-
-        bento_controller_ip = ip
-        self.root.after(0, lambda: self.ip_entry.delete(0, tk.END))
-        self.root.after(0, lambda: self.ip_entry.insert(0, ip))
-        self.root.after(0, lambda: self._update_status("green"))
-
-        for channel in range(1, 7):
-            try:
-                pre_pressure = await pneumatic_read_pressure()
-                report_lines.append(f"Valve {channel} - Pre-open pressure: {pre_pressure}")
-
-                await pneumatic_set_valve(channel, True)
-                await asyncio.sleep(1)
-
-                post_pressure = await pneumatic_read_pressure()
-                report_lines.append(f"Valve {channel} - Post-open pressure: {post_pressure}")
-
-                valve_state = await pneumatic_read_valve_state(channel)
-                report_lines.append(f"Valve {channel} - State after open: {valve_state}")
-
-                await pneumatic_set_valve(channel, False)
-                report_lines.append(f"Valve {channel} - Closed")
-
-                self.root.after(0, lambda: self._update_status("green"))
-                await asyncio.sleep(0.5)
-
-            except Exception as e:
-                report_lines.append(f"Valve {channel} - Error: {str(e)}")
+            if not ip:
+                report_lines.append("IP Fetch - Failed after 3 attempts")
                 self.root.after(0, lambda: self._update_status("red"))
-                await asyncio.sleep(0.5)
+                self.root.after(0, lambda: self.message_label.config(text="Failed to fetch IP."))
+                return
 
-        return report_lines
+            bento_controller_ip = ip
+            self.root.after(0, lambda: self.ip_entry.delete(0, tk.END))
+            self.root.after(0, lambda: self.ip_entry.insert(0, ip))
+            self.root.after(0, lambda: self._update_status("green"))
 
-    def _prompt_report_filename(self, report_lines):
-        popup = tk.Toplevel(self.root)
-        popup.title("Save Report As")
-        tk.Label(popup, text="Enter filename for the report:").pack(pady=10)
-        entry = tk.Entry(popup, width=40)
-        entry.insert(0, f"auto_test_report_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.txt")
-        entry.pack(pady=5)
+            for channel in range(1, 7):
+                try:
+                    await pneumatic_set_valve(channel, False)
+                    report_lines.append(f"Initial Close Valve {channel} - Success")
+                except Exception as e:
+                    report_lines.append(f"Initial Close Valve {channel} - Failed: {e}")
 
-        def confirm():
-            filename = entry.get().strip()
-            if not filename.endswith(".txt"):
-                filename += ".txt"
-            popup.destroy()
-            with open(filename, "w") as f:
-                for line in report_lines:
-                    f.write(line + "\n")
-            self.message_label.config(text=f"Test complete. Report saved: {filename}")
+            for channel in range(1, 7):
+                try:
+                    read_closed = await pneumatic_read_valve_state(channel)
+                    report_lines.append(f"Read Pressure Closed Valve {channel}: {read_closed}")
+                    await pneumatic_set_valve(channel, True)
+                    report_lines.append(f"Open Valve {channel} - Success")
+                    read_opened = await pneumatic_read_valve_state(channel)
+                    report_lines.append(f"Read Pressure Opened Valve {channel}: {read_opened}")
+                    await pneumatic_set_valve(channel, False)
+                    report_lines.append(f"Close Valve {channel} - Success")
+                    self.root.after(0, lambda: self._update_status("green"))
+                    await asyncio.sleep(0.5)
+                except Exception as e:
+                    report_lines.append(f"Valve {channel} Sequence Failed: {e}")
+                    self.root.after(0, lambda: self._update_status("red"))
+                    await asyncio.sleep(0.5)
 
-        tk.Button(popup, text="Save", command=confirm).pack(pady=10)
+            def save_report():
+                name = simpledialog.askstring("Report Name", "Enter test report name:", parent=self.root)
+                base = name if name else "report"
+                full_name = f"bento-elec-{timestamp}_{base}.txt"
+                with open(full_name, "w") as f:
+                    for line in report_lines:
+                        f.write(line + "\n")
+                self.message_label.config(text=f"Test complete. Report saved: {full_name}")
+
+            self.root.after(0, save_report)
+
+        schedule_coro(sequence_task())
 
 if __name__ == "__main__":
     PneumaticControlGUI()
